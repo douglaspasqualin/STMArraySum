@@ -30,6 +30,7 @@
         sigsetjmp(*checkPoint, 0); 
 
 #define TM_LOAD(addr)                      stm_load((stm_word_t *)addr)
+#define TM_LOAD_I(addr)                    (int) TM_LOAD(addr)  
 #define TM_STORE(addr, value)              stm_store((stm_word_t *)addr, (stm_word_t)value)
 #define TM_STATS()     \
     unsigned long stat;     \
@@ -50,7 +51,7 @@
 
 
 #define NUM_THREADS 8
-#define ARRAY_SIZE 160000000 //160.000.000 
+#define ARRAY_SIZE 1600000 //160.000.000 
 #define CHUNK ARRAY_SIZE / NUM_THREADS
 
 /* Global variables */
@@ -87,7 +88,7 @@ void thread_pin_to_cpu(pthread_t thread, int core_id) {
 }
 
 void *doSum(void *args) {
-    const int threadId = *((int *) args);
+    int threadId = *((int *) args); 
     if (pinCoreType == 1) { //worst pin
         thread_pin_to_cpu(pthread_self(), worst_pin[threadId]);
     } else if (pinCoreType == 2) { //best pin
@@ -98,18 +99,24 @@ void *doSum(void *args) {
 
     int i;
     int idx = threadId * CHUNK;
+    int value;
     for (i = idx; i < idx + CHUNK; i++) {
         TM_START();
+        value = array[i];
         if (threadId == 0 || threadId == 1) {
-            TM_STORE(&sum_0_1, TM_LOAD(&sum_0_1) + array[i]);
+            TM_STORE(&sum_0_1, TM_LOAD(&sum_0_1) + value);
         } else if (threadId == 2 || threadId == 3) {
-            TM_STORE(&sum_2_3, TM_LOAD(&sum_2_3) + array[i]);
+            TM_STORE(&sum_2_3, TM_LOAD(&sum_2_3) + value);
         } else if (threadId == 4 || threadId == 5) {
-            TM_STORE(&sum_4_5, TM_LOAD(&sum_4_5) + array[i]);
+            TM_STORE(&sum_4_5, TM_LOAD(&sum_4_5) + value);
         } else if (threadId == 6 || threadId == 7) {
-            TM_STORE(&sum_6_7, TM_LOAD(&sum_6_7) + array[i]);
+            TM_STORE(&sum_6_7, TM_LOAD(&sum_6_7) + value);
         }
         stm_commit();
+if (threadId == 4 || threadId == 5) {
+ //      printf("%d\n", sum_2_3);
+ //       printf("%d\n", array[i]);
+}
     }
     stm_exit_thread();
 }
