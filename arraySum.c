@@ -71,10 +71,10 @@ pthread_t threads[NUM_THREADS];
 int sumValidation = 0; //final verification value
 
 /* Threads sum value (each 2 threads) */
-int sum_0_1 = 0;
-int sum_2_3 = 0;
-int sum_4_5 = 0;
-int sum_6_7 = 0;
+int sum_0_1;
+int sum_2_3;
+int sum_4_5;
+int sum_6_7;
 
 void thread_pin_to_cpu(pthread_t thread, int core_id) {
     cpu_set_t cpuset;
@@ -102,7 +102,7 @@ void *doSum(void *args) {
     int value;
     for (i = idx; i < idx + CHUNK; i++) {
         TM_START();
-        value = array[i];
+        value = TM_LOAD(&array[i]);
         if (threadId == 0 || threadId == 1) {
             TM_STORE(&sum_0_1, TM_LOAD(&sum_0_1) + value);
         } else if (threadId == 2 || threadId == 3) {
@@ -113,10 +113,6 @@ void *doSum(void *args) {
             TM_STORE(&sum_6_7, TM_LOAD(&sum_6_7) + value);
         }
         stm_commit();
-if (threadId == 4 || threadId == 5) {
- //      printf("%d\n", sum_2_3);
- //       printf("%d\n", array[i]);
-}
     }
     stm_exit_thread();
 }
@@ -166,14 +162,14 @@ int main(int argc, char** argv) {
 
     TM_STARTUP();
     initThreads();
-  //  TM_STATS();
+    TM_STATS();
 
     TIMER_T stopTime;
     TIMER_READ(stopTime);
 
     stm_exit();
 
-    //Verify if the parallel sum is correct.
+   // Verify if the parallel sum is correct.
     assert(sumValidation == (sum_0_1 + sum_2_3 + sum_4_5 + sum_6_7));
 
     char* pinName;
