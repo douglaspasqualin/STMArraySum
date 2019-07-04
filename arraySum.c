@@ -51,7 +51,7 @@
 
 
 #define NUM_THREADS 8
-#define ARRAY_SIZE 160000000 //160.000.000 
+#define ARRAY_SIZE 16000000 //16.000.000 
 #define CHUNK ARRAY_SIZE / NUM_THREADS
 
 /* Global variables */
@@ -151,7 +151,7 @@ int main(int argc, char** argv) {
         return (EXIT_FAILURE);
     } else {
         pinCoreType = atoi(optarg);
-        if (pinCoreType < 0 || pinCoreType > 2) {
+        if (pinCoreType < 0 || pinCoreType > 3) {
             fprintf(stderr, "Parameter -c need to be 0, 1, 2 or 3\n");
             return (EXIT_FAILURE);
         }
