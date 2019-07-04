@@ -51,7 +51,7 @@
 
 
 #define NUM_THREADS 8
-#define ARRAY_SIZE 1600000 //160.000.000 
+#define ARRAY_SIZE 160000000 //160.000.000 
 #define CHUNK ARRAY_SIZE / NUM_THREADS
 
 /* Global variables */
