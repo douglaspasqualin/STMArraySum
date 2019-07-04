@@ -16,3 +16,9 @@
   do
      ./arraySum.out -c 2 >> results.txt
   done
+
+  #Best2
+  for i in `seq 0 9`
+  do
+     ./arraySum.out -c 3 >> results.txt
+  done

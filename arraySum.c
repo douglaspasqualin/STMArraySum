@@ -61,10 +61,12 @@ int threadsArgs[NUM_THREADS];
 int pinCoreType;
 //0 - no pin, OS default
 //1 - worst pin
-//2 - best pin
+//2 - best pin (cache)
+//3 - best pin 2 (cache and NUMA node)
 
 const int worst_pin[] = {0, 56, 16, 40, 24, 48, 32, 8};
 const int best_pin[] = {0, 1, 8, 9, 16, 17, 24, 25};
+const int best_pin2[] = {0, 1, 2, 3, 4, 5, 6, 7};
 
 pthread_t threads[NUM_THREADS];
 
@@ -88,11 +90,13 @@ void thread_pin_to_cpu(pthread_t thread, int core_id) {
 }
 
 void *doSum(void *args) {
-    int threadId = *((int *) args); 
+    int threadId = *((int *) args);
     if (pinCoreType == 1) { //worst pin
         thread_pin_to_cpu(pthread_self(), worst_pin[threadId]);
     } else if (pinCoreType == 2) { //best pin
         thread_pin_to_cpu(pthread_self(), best_pin[threadId]);
+    } else if (pinCoreType == 3) { //best pin 2
+        thread_pin_to_cpu(pthread_self(), best_pin2[threadId]);
     }
 
     stm_init_thread();
@@ -148,7 +152,7 @@ int main(int argc, char** argv) {
     } else {
         pinCoreType = atoi(optarg);
         if (pinCoreType < 0 || pinCoreType > 2) {
-            fprintf(stderr, "Parameter -c need to be 0, 1 or 2\n");
+            fprintf(stderr, "Parameter -c need to be 0, 1, 2 or 3\n");
             return (EXIT_FAILURE);
         }
     }
@@ -169,7 +173,7 @@ int main(int argc, char** argv) {
 
     stm_exit();
 
-   // Verify if the parallel sum is correct.
+    // Verify if the parallel sum is correct.
     assert(sumValidation == (sum_0_1 + sum_2_3 + sum_4_5 + sum_6_7));
 
     char* pinName;
@@ -177,9 +181,10 @@ int main(int argc, char** argv) {
         pinName = "Default";
     } else if (pinCoreType == 1) {
         pinName = "Worst";
-    }
-    if (pinCoreType == 2) {
+    } else if (pinCoreType == 2) {
         pinName = "Best";
+    } else if (pinCoreType == 3) {
+        pinName = "Best2";
     }
 
     printf("%f\t%s\n", TIMER_DIFF_SECONDS(startTime, stopTime), pinName);
