@@ -1,0 +1,120 @@
+#commits    : 16000000
+#aborts     : 276039722
+20.292683	Default
+#commits    : 16000000
+#aborts     : 161039957
+19.159663	Default
+#commits    : 16000000
+#aborts     : 190866078
+20.854608	Default
+#commits    : 16000000
+#aborts     : 213903129
+19.507316	Default
+#commits    : 16000000
+#aborts     : 175264300
+17.243919	Default
+#commits    : 16000000
+#aborts     : 198125619
+21.226959	Default
+#commits    : 16000000
+#aborts     : 240763760
+19.162243	Default
+#commits    : 16000000
+#aborts     : 207914386
+20.023559	Default
+#commits    : 16000000
+#aborts     : 206922014
+19.571774	Default
+#commits    : 16000000
+#aborts     : 208409460
+22.771632	Default
+#commits    : 16000000
+#aborts     : 195959281
+19.441830	Worst
+#commits    : 16000000
+#aborts     : 217337801
+20.099395	Worst
+#commits    : 16000000
+#aborts     : 213559608
+18.821509	Worst
+#commits    : 16000000
+#aborts     : 214647169
+20.168752	Worst
+#commits    : 16000000
+#aborts     : 200270564
+18.959978	Worst
+#commits    : 16000000
+#aborts     : 207199243
+20.829838	Worst
+#commits    : 16000000
+#aborts     : 221069274
+20.597269	Worst
+#commits    : 16000000
+#aborts     : 228098712
+20.511300	Worst
+#commits    : 16000000
+#aborts     : 210234813
+17.947391	Worst
+#commits    : 16000000
+#aborts     : 192893365
+20.443419	Worst
+#commits    : 16000000
+#aborts     : 93645349
+14.372209	Best
+#commits    : 16000000
+#aborts     : 91523811
+14.436043	Best
+#commits    : 16000000
+#aborts     : 86872159
+13.639510	Best
+#commits    : 16000000
+#aborts     : 88204399
+14.026911	Best
+#commits    : 16000000
+#aborts     : 93314822
+14.950222	Best
+#commits    : 16000000
+#aborts     : 93286043
+14.760779	Best
+#commits    : 16000000
+#aborts     : 89973152
+14.046335	Best
+#commits    : 16000000
+#aborts     : 93193917
+14.224917	Best
+#commits    : 16000000
+#aborts     : 75603719
+12.895465	Best
+#commits    : 16000000
+#aborts     : 77380552
+12.476139	Best
+#commits    : 16000000
+#aborts     : 101730605
+20.043799	Best2
+#commits    : 16000000
+#aborts     : 102178526
+18.407503	Best2
+#commits    : 16000000
+#aborts     : 101882853
+20.027515	Best2
+#commits    : 16000000
+#aborts     : 102165426
+18.462792	Best2
+#commits    : 16000000
+#aborts     : 101804856
+20.183626	Best2
+#commits    : 16000000
+#aborts     : 105116132
+18.796418	Best2
+#commits    : 16000000
+#aborts     : 101968447
+18.369792	Best2
+#commits    : 16000000
+#aborts     : 101265525
+20.000178	Best2
+#commits    : 16000000
+#aborts     : 102494616
+18.465408	Best2
+#commits    : 16000000
+#aborts     : 100782575
+19.975585	Best2
