@@ -29,7 +29,7 @@ ggplot(tgc, aes(x=factor(V2), y=V1, fill=V3)) +
   #ggtitle("LULESH") +
   xlab("Machines") +
   ylab("Exec. Time") +
-  annotate("text", x = 0.7, y = 35, label = "Less is better") + 
+  annotate("text", x = 0.7, y = 40, label = "Less is better") + 
   #scale_y_continuous(limits=c(0,NA), breaks=yticks, labels=yticks) + 
   coord_cartesian(ylim = c(0, 40)) +
   #  scale_y_log10(breaks = trans_breaks("log10", function(x) 10^x),
