@@ -27,9 +27,11 @@ ggplot(tgc, aes(x=factor(V2), y=V1, fill=V3)) +
                 position=position_dodge(.9)) +  
   ggtitle(expression(atop("STM array sum", atop(italic("16.000.000 elements"))))) +
   #ggtitle("LULESH") +
-  xlab("Threads") +
+  xlab("Machines") +
   ylab("Total aborts") +
-  annotate("text", x = 1.4, y = 215000000, label = "Less is better") + 
+  annotate("text", x = 2.25, y = 250000000, label = "Less is better") + 
+  #coord_cartesian(ylim = c(0, 300000000)) +
+  scale_y_continuous(labels = comma) +
   #scale_y_continuous(limits=c(0,NA), breaks=yticks, labels=yticks) + 
   #scale_y_log10(breaks = trans_breaks("log10", function(x) 10^x),
   #                labels = trans_format("log10", math_format(10^.x))) +
