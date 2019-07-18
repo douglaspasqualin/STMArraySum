@@ -2,23 +2,18 @@
   #Default
   for i in `seq 0 9`
   do
-     ./arraySum.out -c 0 >> results.txt
+     ./arraySum.out -c 0 >> results2.txt
   done
 
   #Worst
   for i in `seq 0 9`
   do
-     ./arraySum.out -c 1 >> results.txt
+     ./arraySum.out -c 1 >> results2.txt
   done
 
   #Best
   for i in `seq 0 9`
   do
-     ./arraySum.out -c 2 >> results.txt
+     ./arraySum.out -c 2 >> results2.txt
   done
 
-  #Best2
-  for i in `seq 0 9`
-  do
-     ./arraySum.out -c 3 >> results.txt
-  done
