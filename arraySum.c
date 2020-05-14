@@ -64,8 +64,8 @@ int pinCoreType;
 //2 - best pin (cache)
 //3 - best pin 2 (cache and NUMA node)
 
-const int worst_pin[] = {0, 42, 6, 36, 12, 30, 18, 24};
-const int best_pin[] = {0, 1, 6, 7, 12, 13, 18, 19};
+const int worst_pin[] = {0, 56, 16, 40, 24, 48, 8, 32};
+const int best_pin[] = {0, 1, 8, 9, 16, 17, 24, 25};
 const int best_pin2[] = {0, 1, 2, 3, 4, 5, 6, 7};
 
 pthread_t threads[NUM_THREADS];
